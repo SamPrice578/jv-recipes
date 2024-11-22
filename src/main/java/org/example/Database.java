@@ -1,6 +1,5 @@
 package org.example;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import static java.lang.Boolean.TRUE;
@@ -19,6 +18,8 @@ public class Database {
                 .setProperty(HIGHLIGHT_SQL, TRUE.toString())
                 .setProperty("hibernate.hikari.maximumPoolSize", "20")
                 .addAnnotatedClass(Category.class)
+                .addAnnotatedClass(Ingredient.class)
+                .addAnnotatedClass(RecipeUser.class)
                 .buildSessionFactory();
     }
 }
