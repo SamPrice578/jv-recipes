@@ -52,16 +52,19 @@ public class Main {
             System.out.println(user);
         });
 
-        //should fail
         sessionFactory.inTransaction(session -> {
-            session.persist(new RecipeUser(2, "Sam", "Samnorthcoders.com", "12345", UserRole.Admin, Date.valueOf("2024-01-01")));
+            Ingredient butter = session.get(Ingredient.class, 1);
+            Ingredient[] ingredients = {butter};
+            Category category = session.get(Category.class, 1);
+            Category[] categories = {category};
+            RecipeUser recipeUser = session.get(RecipeUser.class, 1);
+            session.persist(new Recipe(1, "Chocolate Cake", "Tasty cake", "Mix ingredients and cook...", 15, 30, 5, 10, ingredients, categories, recipeUser, Date.valueOf("2024-01-01"), Date.valueOf("2024-02-01")));
         });
 
         sessionFactory.inTransaction(session -> {
-            RecipeUser user = session.get(RecipeUser.class, 2);
-            System.out.println(user);
+            Recipe recipe = session.get(Recipe.class, 1);
+            System.out.println(recipe);
         });
-
 
 
 
