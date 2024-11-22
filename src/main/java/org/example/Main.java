@@ -15,6 +15,8 @@ public class Main {
 	        tx = session.beginTransaction();
 	        Category category = new Category(1, "Cake");
             session.merge(category);
+            Category cake = session.get(Category.class, 1);
+            System.out.println(cake.toString());
             tx.commit();
         } catch (Exception e) {
             if(tx != null) { //or tx != null, Chris isn't sure of best practice`

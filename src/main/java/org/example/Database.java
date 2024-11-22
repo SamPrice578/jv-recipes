@@ -18,6 +18,7 @@ public class Database {
                 .setProperty(FORMAT_SQL, TRUE.toString())
                 .setProperty(HIGHLIGHT_SQL, TRUE.toString())
                 .setProperty("hibernate.hikari.maximumPoolSize", "20")
+                .addAnnotatedClass(Category.class)
                 .buildSessionFactory();
     }
 }
