@@ -9,42 +9,59 @@ import java.util.Arrays;
 public class Recipe {
 
     @Id
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    String title;
+    private String title;
 
-    String description;
+    private String description;
 
-    String instructions;
+    private String instructions;
 
-    int preparationTime;
+    private int preparationTime;
 
-    int cookingTime;
+    private int cookingTime;
 
-    int difficultyLevel;
+    private int servings;
 
-    int rating;
+    private int difficultyLevel;
 
-    @OneToMany
-    Ingredient[] listOfIngredients; //
+    private int rating;
 
-    @OneToMany
-    Category[] listOfCategories; //many to many
+    @ManyToMany
+    private Ingredient[] listOfIngredients;
+
+    @ManyToMany
+    private Category[] listOfCategories;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    RecipeUser creator; //many to one - g.g one RecipeUser might make multiple reciepes.
+    private RecipeUser creator;
 
-    Date dateCreated;
+    private Date dateCreated;
 
-    Date lastModified;
+    private Date lastModified;
 
-    public Recipe(int id, String title, String description, String instructions, int preparationTime, int cookingTime, int difficultyLevel, int rating, Ingredient[] listOfIngredients, Category[] listOfCategories, RecipeUser creator, Date dateCreated, Date lastModified) {
-        this.id = id;
+    public Recipe(
+            String title,
+            String description,
+            String instructions,
+            int preparationTime,
+            int cookingTime,
+            int servings,
+            int difficultyLevel,
+            int rating,
+            Ingredient[] listOfIngredients,
+            Category[] listOfCategories,
+            RecipeUser creator,
+            Date dateCreated,
+            Date lastModified) {
+
         this.title = title;
         this.description = description;
         this.instructions = instructions;
         this.preparationTime = preparationTime;
         this.cookingTime = cookingTime;
+        this.servings = servings;
         this.difficultyLevel = difficultyLevel;
         this.rating = rating;
         this.listOfIngredients = listOfIngredients;
@@ -66,6 +83,7 @@ public class Recipe {
                 ", instructions='" + instructions + '\'' +
                 ", preparationTime=" + preparationTime +
                 ", cookingTime=" + cookingTime +
+                ", servings=" + servings +
                 ", difficultyLevel=" + difficultyLevel +
                 ", rating=" + rating +
                 ", listOfIngredients=" + Arrays.toString(listOfIngredients) +
