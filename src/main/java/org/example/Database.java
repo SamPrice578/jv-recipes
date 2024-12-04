@@ -21,6 +21,10 @@ public class Database {
                 .addAnnotatedClass(Ingredient.class)
                 .addAnnotatedClass(RecipeUser.class)
                 .addAnnotatedClass(Recipe.class)
+                .addAnnotatedClass(Comment.class)
+                .addAnnotatedClass(Tag.class)
+                .addAnnotatedClass(Image.class)
+                .addAnnotatedClass(Rating.class)
                 .buildSessionFactory();
     }
 }
