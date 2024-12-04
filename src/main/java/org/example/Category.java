@@ -1,13 +1,12 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 class Category {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     String name;
@@ -15,8 +14,7 @@ class Category {
     public Category() {
     }
 
-    public Category(int id, String name) {
-        this.id = id;
+    public Category(String name) {
         this.name = name;
     }
 

@@ -1,6 +1,8 @@
 package org.example;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.Check;
 
@@ -10,6 +12,7 @@ import java.sql.Date;
 //@Check(constraints = )//can be used for validation.
 public class RecipeUser {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     String username;
@@ -27,8 +30,7 @@ public class RecipeUser {
 
     }
 
-    public RecipeUser(int id, String username, String email, String password, UserRole userRole, Date dateRegistered) {
-        this.id = id;
+    public RecipeUser(String username, String email, String password, UserRole userRole, Date dateRegistered) {
         this.username = username;
         this.email = email;
         this.password = password;
